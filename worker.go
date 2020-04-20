@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// Worker - Worker that procresses tasks
 type Worker struct {
 
 	// Debug Settings
@@ -22,7 +23,7 @@ type Worker struct {
 	wQuit chan bool
 }
 
-// NewWorker - creates a new worker
+// NewWorker - Creates a new worker
 func NewWorker(readyPool chan chan Task, done sync.WaitGroup) *Worker {
 	return &Worker{
 		wReadyChan:    readyPool,
@@ -32,7 +33,7 @@ func NewWorker(readyPool chan chan Task, done sync.WaitGroup) *Worker {
 	}
 }
 
-// Start - begins the Task processing loop for the worker
+// Start - Begins processing worker's task
 func (w *Worker) Start() {
 	go func() {
 		w.wIsDone.Add(1)
@@ -49,7 +50,7 @@ func (w *Worker) Start() {
 	}()
 }
 
-// Stop - stops the worker
+// Stop - Stops the worker
 func (w *Worker) Stop() {
 	w.wQuit <- true
 }

@@ -1,6 +1,6 @@
 package taskqueue
 
-// Task interface
+// Task - Task interface
 type Task interface {
 	Run()
 }

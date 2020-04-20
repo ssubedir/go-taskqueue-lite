@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-// Queue - a queue for enqueueing Tasks to be processed
+// Queue - A queue for enqueueing tasks to be processed
 type Queue struct {
 
 	// Debug Settings
@@ -27,7 +27,7 @@ type Queue struct {
 	tQuit chan bool
 }
 
-// NewQueue - creates a new Task queue
+// NewQueue - Creates a new Queue
 func NewQueue(nW int) *Queue {
 
 	// workers
@@ -62,7 +62,7 @@ func NewQueue(nW int) *Queue {
 	}
 }
 
-// dispatch workers
+// dispatch - Dispatch workers to process tasks
 func (q *Queue) dispatch() {
 	q.tDispatcherSync.Add(1)
 	for {
@@ -81,7 +81,7 @@ func (q *Queue) dispatch() {
 	}
 }
 
-// Start - starts the worker routines and dispatcher routine
+// Start - Starts the worker and dispatcher go routines
 func (q *Queue) Start() {
 	for i := 0; i < len(q.tWorkers); i++ {
 		q.tWorkers[i].Start() // start workers
@@ -89,12 +89,13 @@ func (q *Queue) Start() {
 	go q.dispatch() // queue dispach
 }
 
+// Stop - Stopes Queue
 func (q *Queue) Stop() {
 	q.tQuit <- true          // pass quit flag
 	q.tDispatcherSync.Wait() // wait
 }
 
-// Submit - adds a new Task to be processed
+// Submit - Adds a new Task to be processed
 func (q *Queue) Submit(Task Task) {
 	q.tQueueChan <- Task
 }
