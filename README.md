@@ -69,6 +69,6 @@ func (t *TestTask) Run() {
 
 License
 ----
-Go-TaskQueue-Lite  is under [MIT](https://github.com/tatsushid/go-fastping/blob/master/LICENSE/) License.
+Go-TaskQueue-Lite  is under [MIT](https://github.com/ssubedir/go-taskqueue-lite/blob/master/LICENSE) License.
 See the LICENSE file for details.
 
