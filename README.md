@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	tq "github.com/ssubedir/gotaskqueue-lite"
+	tq "github.com/ssubedir/go-taskqueue-lite"
 )
 type TestTask struct {
 	ID int
@@ -28,7 +28,8 @@ func (t *TestTask) Run() {
 	fmt.Printf("I am working - '%d'\n", t.ID)
 }
 func main() {
-	queue := tq.NewQueue(100)
+	// Queue with 8 workers
+	queue := tq.NewQueue(8)
 	queue.Start()
 	queue.Submit(&TestTask{1})
 	queue.Submit(&TestTask{2})
@@ -68,6 +69,6 @@ func (t *TestTask) Run() {
 
 License
 ----
-Go-TaskQueue-Lite  is under [MIT](https://github.com/tatsushid/go-fastping/blob/master/LICENSE/) License.
+Go-TaskQueue-Lite  is under [MIT](https://github.com/ssubedir/go-taskqueue-lite/blob/master/LICENSE) License.
 See the LICENSE file for details.
 
