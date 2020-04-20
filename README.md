@@ -1,4 +1,6 @@
 # Go-TaskQueue-Lite 
+![Go](https://github.com/ssubedir/go-taskqueue-lite/workflows/Go/badge.svg)
+
 Lite Task/Job queue library using go rutines and channels 
   - Thread-Safe
   - Queue jobs/tasks 
