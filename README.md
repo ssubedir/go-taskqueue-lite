@@ -28,7 +28,8 @@ func (t *TestTask) Run() {
 	fmt.Printf("I am working - '%d'\n", t.ID)
 }
 func main() {
-	queue := tq.NewQueue(100)
+	// Queue with 8 workers
+	queue := tq.NewQueue(8)
 	queue.Start()
 	queue.Submit(&TestTask{1})
 	queue.Submit(&TestTask{2})
