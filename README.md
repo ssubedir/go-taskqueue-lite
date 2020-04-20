@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	tq "github.com/ssubedir/gotaskqueue-lite"
+	tq "github.com/ssubedir/go-taskqueue-lite"
 )
 type TestTask struct {
 	ID int
