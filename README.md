@@ -1,4 +1,5 @@
 # Go-TaskQueue-Lite 
+[![GoDoc](https://godoc.org/github.com/sparrc/go-ping?status.svg)]()
 ![Go](https://github.com/ssubedir/go-taskqueue-lite/workflows/Go/badge.svg)
 
 Lite Task/Job queue library using go rutines and channels 
