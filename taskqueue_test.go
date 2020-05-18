@@ -61,7 +61,6 @@
 //     // do task
 // }
 
-
 package taskqueue
 
 import (
@@ -79,11 +78,42 @@ func (t *TestTask) Run() {
 	fmt.Printf("Processing Task '%d'\n", t.ID)
 }
 
-func TestQueue(t *testing.T) {
-	queue := NewQueue(100)
+// Fire-and-forget task test
+func TestEnqueue(t *testing.T) {
+	queue := NewQueue(8)
 	queue.Start()
-	queue.Submit(&TestTask{1})
-	queue.Submit(&TestTask{2})
-	queue.Submit(&TestTask{3})
-	queue.Stop()
+	defer queue.Stop()
+	queue.Enqueue(&TestTask{1})
+}
+
+//  Delayed task test
+func TestSchedul0(t *testing.T) {
+	queue := NewQueue(8)
+	queue.Start()
+	defer queue.Stop()
+	queue.Schedule(&TestTask{1}, "10s")
+}
+
+//  Delayed task test
+func TestSchedule1(t *testing.T) {
+	queue := NewQueue(8)
+	queue.Start()
+	defer queue.Stop()
+	queue.Schedule(&TestTask{1}, "1m10s")
+}
+
+//  Recurring task test
+func TestRecurring0(t *testing.T) {
+	queue := NewQueue(8)
+	queue.Start()
+	defer queue.Stop()
+	queue.Recurring(&TestTask{1}, "10s")
+}
+
+//  Recurring task test
+func TestRecurring1(t *testing.T) {
+	queue := NewQueue(8)
+	queue.Start()
+	defer queue.Stop()
+	queue.Recurring(&TestTask{1}, "1m10s")
 }
