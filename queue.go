@@ -106,8 +106,8 @@ func (q *Queue) Enqueue(Task Task) {
 }
 
 // Schedule - Delayed task are executed only once too, but not immediately, after a certain time interval.
-func (q *Queue) Schedule(Task Task, t string) {
-	dur, _ := time.ParseDuration(t)
+func (q *Queue) Schedule(Task Task, duration_string string) {
+	dur, _ := time.ParseDuration(duration_string)
 	go func() {
 		t := time.NewTicker(dur)
 		defer t.Stop()
@@ -117,8 +117,8 @@ func (q *Queue) Schedule(Task Task, t string) {
 }
 
 // Recurring - Recurring task are executed every x duration
-func (q *Queue) Recurring(Task Task, t string) {
-	dur, _ := time.ParseDuration(t)
+func (q *Queue) Recurring(Task Task, duration_string string) {
+	dur, _ := time.ParseDuration(duration_string)
 	go func() {
 
 		// Signals to stop timer
