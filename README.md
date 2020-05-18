@@ -56,11 +56,9 @@ All tasks must implement `Run()`
 ```go
 type TestTask struct {
     // task struct
-    ID int
 }
 func (t *TestTask) Run() {
     // do task
-    fmt.Printf("Processing Task '%d'\n", t.ID)
 }
 ```
 
