@@ -121,7 +121,7 @@ A duration string is a possibly signed sequence of decimal numbers, each with op
 "20s"
 ```
 
-Recurring task be executed many times on the specified schedule.
+Recurring task are executed many times on the specified schedule.
 ```go
 queue := NewQueue(8)
 queue.Start()
