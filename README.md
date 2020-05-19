@@ -5,7 +5,7 @@
 An easy way to perform background processing in go. 
   - Thread-Safe
   - Custom workers pool size
-  - Queue supported tasks/jobs
+  - Supported background tasks/jobs
   	- only once
   	- scheduled
   	- recurring
